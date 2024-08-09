@@ -19,12 +19,6 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @PostMapping("/authenticate")
-    public ResponseEntity<String> authenticateUser(@RequestBody Login request) throws LoginException {
-        String token = customerService.authenticateUser(request.getLoginId(), request.getPassword());
-        return new ResponseEntity<>(token, HttpStatus.OK);
-    }
-
     @PostMapping("/customers")
     public ResponseEntity<String> createCustomer(@RequestHeader("Authorization") String token,
                                                  @RequestBody Customer customer) {
